@@ -10,4 +10,4 @@ Each of the branch is deployed on [Contentstack Launch](https://www.contentstack
 
 [Launch Edge Function](https://www.contentstack.com/docs/developers/launch/edge-functions) at `/functions/[proxy].edge.js` is used to switch to a particular deployment randomly.
 
-You can access the website [here](https://edge-blue-green.contentstackapps.com/). The content should appear different based on the device you are accessing it from.
+You can access the website [here](https://edge-device-adaptation.contentstackapps.com). The content should appear different based on the device you are accessing it from.
