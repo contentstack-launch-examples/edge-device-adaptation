@@ -98,8 +98,10 @@ export async function getServerSideProps({ params, res }: any) {
     const page = await getPageRes('/blog');
     const posts = await getBlogPostRes(`/blog/${params.post}`);
     if (!page || !posts) throw new Error('404');
-    res.setHeader('Cache-Control','private, max-age=0, s-maxage=86400, stale-while-revalidate=59');
-  
+    res.setHeader(
+      'Cache-Control',
+      'private, max-age=0, s-maxage=86400, stale-while-revalidate=59'
+    );
     return {
       props: {
         pageUrl: `/blog/${params.post}`,
