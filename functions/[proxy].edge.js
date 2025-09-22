@@ -13,7 +13,7 @@ export default async function handler(request) {
   }
 console.log(rid,modifiedUrl.hostname)
   const newRequest = new Request(modifiedUrl, request);
-  const r = fetch(newRequest);
+  const r = await fetch(newRequest);
   console.log(rid,r.status)
   return r;
 }
