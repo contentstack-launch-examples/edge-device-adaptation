@@ -1,5 +1,5 @@
 const mobileHost = "edge-device-adaptation-mobile.contentstackapps.com";
-const webHost = "edge-device-adaptation.contentstackapps.com";
+const webHost = "edge-device-adaptation-test.contentstackapps.com";
 
 export default async function handler(request) {
   const userAgentHeader = request.headers.get('User-Agent');
