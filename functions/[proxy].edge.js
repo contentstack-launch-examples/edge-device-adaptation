@@ -15,6 +15,7 @@ console.log(rid,modifiedUrl.hostname)
   const newRequest = new Request(modifiedUrl, request);
   const r = fetch(newRequest);
   console.log(rid,r.status)
+  return r;
 }
 
 function isMobile(userAgent) {
