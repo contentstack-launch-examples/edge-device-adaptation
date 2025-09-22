@@ -2,7 +2,7 @@ const mobileHost = "edge-device-adaptation-mobile.contentstackapps.com";
 const webHost = "edge-device-adaptation-test.contentstackapps.com";
 
 export default async function handler(request) {
-  rid = generateRandomString(10);
+  const rid = generateRandomString(10);
   const userAgentHeader = request.headers.get('User-Agent');
   const modifiedUrl = new URL(request.url);
   console.log(rid,isMobile(userAgentHeader))
