@@ -1,8 +1,10 @@
 import Stack from '../contentstack-sdk';
 import { addEditableTags } from '@contentstack/utils';
-import getConfig from 'next/config';
 
-const { publicRuntimeConfig } = getConfig();
+// next.config.js inlines these values at build time (next/config was removed in Next.js 16).
+const publicRuntimeConfig = JSON.parse(
+  process.env.CONTENTSTACK_PUBLIC_RUNTIME_CONFIG || '{}'
+);
 const envConfig = process.env.CONTENTSTACK_API_KEY
   ? process.env
   : publicRuntimeConfig;
