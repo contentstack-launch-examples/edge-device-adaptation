@@ -2,9 +2,8 @@ const withPWA = require('next-pwa')({
   dest: 'public'
 });
 
-const config = {
-  publicRuntimeConfig: {
-    // Will be available on both server and client
+// Will be available on both server and client
+const publicRuntimeConfig = {
     CONTENTSTACK_API_KEY: process.env.CONTENTSTACK_API_KEY,
     CONTENTSTACK_DELIVERY_TOKEN: process.env.CONTENTSTACK_DELIVERY_TOKEN,
     CONTENTSTACK_ENVIRONMENT: process.env.CONTENTSTACK_ENVIRONMENT,
@@ -18,6 +17,14 @@ const config = {
       process.env.NEXT_PUBLIC_CONTENTSTACK_LIVE_PREVIEW || 'true',
     CONTENTSTACK_LIVE_EDIT_TAGS:
       process.env.CONTENTSTACK_LIVE_EDIT_TAGS || 'false',
+};
+
+const config = {
+  // Next.js 16 removed publicRuntimeConfig and next/config. The same values are
+  // inlined into the server and browser bundles at build time instead; see
+  // contentstack-sdk/index.js and helper/index.js.
+  env: {
+    CONTENTSTACK_PUBLIC_RUNTIME_CONFIG: JSON.stringify(publicRuntimeConfig),
   },
 };
 module.exports =
