@@ -1,6 +1,15 @@
-const withPWA = require('next-pwa')({
-  dest: 'public'
-});
+import withSerwistInit from '@serwist/next';
+
+// The service worker is only built outside development, as before.
+const withPWA =
+  process.env.NODE_ENV === 'development'
+    ? (nextConfig) => nextConfig
+    : withSerwistInit({
+        swSrc: 'service-worker/sw.js',
+        swDest: 'public/sw.js',
+        // next-pwa did not reload the page when the browser came back online.
+        reloadOnOnline: false,
+      });
 
 // Will be available on both server and client
 const publicRuntimeConfig = {
@@ -27,5 +36,4 @@ const config = {
     CONTENTSTACK_PUBLIC_RUNTIME_CONFIG: JSON.stringify(publicRuntimeConfig),
   },
 };
-module.exports =
-  process.env.NODE_ENV === 'development' ? config : withPWA(config);
+export default withPWA(config);
