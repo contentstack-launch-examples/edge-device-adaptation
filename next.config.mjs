@@ -7,8 +7,6 @@ const withPWA =
     : withSerwistInit({
         swSrc: 'service-worker/sw.js',
         swDest: 'public/sw.js',
-        // next-pwa did not reload the page when the browser came back online.
-        reloadOnOnline: false,
       });
 
 // Will be available on both server and client
